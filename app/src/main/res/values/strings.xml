@@ -7,4 +7,7 @@
     <string name="label_leaders_needed">Required Leaders: %1$d</string>
     <string name="label_parent_volunteers">Parent Volunteers requested: %1$s</string>
     <string name="hint_event_leaders">Required Leaders:</string>
+    <string name="menu_cancelEvent">Cancel</string>
+    <string name="snackbar_enter_title">Please enter a title</string>
+    <string name="button_save_event">Save Event</string>
 </resources>

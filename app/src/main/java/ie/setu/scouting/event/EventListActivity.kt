@@ -17,8 +17,9 @@ import ie.setu.scouting.databinding.ActivityEventListBinding
 import ie.setu.scouting.databinding.CardEventBinding
 import ie.setu.scouting.main.MainApp
 import ie.setu.scouting.models.EventModel
+import ie.setu.scouting.adapters.EventListener
 
-class EventListActivity : AppCompatActivity() {
+class EventListActivity : AppCompatActivity(), EventListener  {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityEventListBinding
@@ -34,8 +35,8 @@ class EventListActivity : AppCompatActivity() {
         app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = EventAdapter(app.events)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = EventAdapter(app.events.findAll(), this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -54,11 +55,21 @@ class EventListActivity : AppCompatActivity() {
     }
 
     private val getResult =
-        registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) {
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
-                binding.recyclerView.adapter?.notifyItemRangeChanged(0, app.events.size)
+                binding.recyclerView.adapter?.notifyItemRangeChanged(0, app.events.findAll().size)
+            }
+        }
+
+    override fun onEventClick(event: EventModel) {
+        val intent = Intent(this, EventActivity::class.java)
+        intent.putExtra("event_edit", event)
+        editResult.launch(intent)
+    }
+    private val editResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                binding.recyclerView.adapter?.notifyItemRangeChanged(0, app.events.findAll().size)
             }
         }
 }

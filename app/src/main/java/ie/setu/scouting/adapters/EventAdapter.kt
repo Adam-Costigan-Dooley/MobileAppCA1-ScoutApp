@@ -7,7 +7,12 @@ import ie.setu.scouting.R
 import ie.setu.scouting.databinding.CardEventBinding
 import ie.setu.scouting.models.EventModel
 
-class EventAdapter(private var events: List<EventModel>) :
+interface EventListener {
+    fun onEventClick(event: EventModel)
+}
+
+class EventAdapter(private var events: List<EventModel>,
+                   private val listener: EventListener) :
     RecyclerView.Adapter<EventAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -21,7 +26,7 @@ class EventAdapter(private var events: List<EventModel>) :
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val event = events[holder.adapterPosition]
-        holder.bind(event)
+        holder.bind(event, listener)
     }
 
     override fun getItemCount(): Int = events.size
@@ -29,7 +34,7 @@ class EventAdapter(private var events: List<EventModel>) :
     class MainHolder(private val binding: CardEventBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(event: EventModel) {
+        fun bind(event: EventModel, listener: EventListener) {
             binding.eventTitle.text = event.title
             binding.description.text = event.description
             binding.leadersNeeded.text = binding.root.context.getString(
@@ -39,6 +44,7 @@ class EventAdapter(private var events: List<EventModel>) :
             binding.parentAllowed.text = binding.root.context.getString(
                 R.string.label_parent_volunteers, parentRequested
             )
+            binding.root.setOnClickListener { listener.onEventClick(event) }
         } /// The above binding was generated with ChatGPT to provide a number and yes/no feature to the app, as i ran into an unexpected issue with implementing it originally.
     }
 }
