@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Scouting</string>
+    <string name="button_add_event">Add Event</string>
+    <string name="hint_event_title">Event Title</string>
+    <string name="hint_event_description">Description</string>
+    <string name="menu_addEvent">Add Event</string>
+</resources>
