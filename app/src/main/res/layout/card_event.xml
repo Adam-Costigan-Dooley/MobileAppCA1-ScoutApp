@@ -42,6 +42,13 @@
             android:layout_below="@id/leadersNeeded"
             android:textSize="14sp"
             />
+        <TextView
+            android:id="@+id/eventDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/parentAllowed"
+            android:textSize="14sp"
+            />
 
 
     </RelativeLayout>

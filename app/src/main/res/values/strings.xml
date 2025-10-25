@@ -11,4 +11,7 @@
     <string name="snackbar_enter_title">Please enter a title</string>
     <string name="button_save_event">Save Event</string>
     <string name="button_delete_event">Delete Event</string>
+    <string name="hint_event_date">Event Date</string>
+    <string name="label_event_date">Event Date: %1$s</string>
+    <string name="button_pick_date">Pick Date</string>
 </resources>

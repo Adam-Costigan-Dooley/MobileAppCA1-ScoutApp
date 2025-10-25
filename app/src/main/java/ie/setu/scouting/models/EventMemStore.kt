@@ -24,6 +24,7 @@ class EventMemStore : EventStore {
             found.description = event.description
             found.leadersNeeded = event.leadersNeeded
             found.parentVolunteersAllowed = event.parentVolunteersAllowed
+            found.date = event.date
             logAll()
         }
     }

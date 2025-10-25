@@ -9,5 +9,6 @@ data class EventModel(
     var title: String = "",
     var description: String = "",
     var leadersNeeded: Int = 0,
-    var parentVolunteersAllowed: Boolean = false
+    var parentVolunteersAllowed: Boolean = false,
+    var date: String = ""
 ) : Parcelable

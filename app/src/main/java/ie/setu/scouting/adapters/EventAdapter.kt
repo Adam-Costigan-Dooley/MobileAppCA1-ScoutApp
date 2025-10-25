@@ -44,7 +44,11 @@ class EventAdapter(private var events: List<EventModel>,
             binding.parentAllowed.text = binding.root.context.getString(
                 R.string.label_parent_volunteers, parentRequested
             )
+            binding.eventDate.text = binding.root.context.getString(
+                R.string.label_event_date,
+                event.date.ifEmpty { "—" }
+            )
             binding.root.setOnClickListener { listener.onEventClick(event) }
-        } /// The above binding was generated with ChatGPT to provide a number and yes/no feature to the app, as i ran into an unexpected issue with implementing it originally.
-    }
+        } /// The Parentallowed binding was generated with ChatGPT to provide a number and yes/no feature to the app, as i ran into an unexpected issue with implementing it originally.
+    }     /// While ChatGPT was not used for the eventDate, it the previous chatgpt parent did serve as the basis.
 }
