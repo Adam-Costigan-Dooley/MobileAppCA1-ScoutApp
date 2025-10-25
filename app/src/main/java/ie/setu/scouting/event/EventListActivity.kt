@@ -57,8 +57,8 @@ class EventListActivity : AppCompatActivity(), EventListener  {
     private val getResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
-                binding.recyclerView.adapter?.notifyItemRangeChanged(0, app.events.findAll().size)
-            }
+                binding.recyclerView.adapter?.notifyDataSetChanged()
+            } ///Explanation beside editresult
         }
 
     override fun onEventClick(event: EventModel) {
@@ -69,7 +69,10 @@ class EventListActivity : AppCompatActivity(), EventListener  {
     private val editResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
-                binding.recyclerView.adapter?.notifyItemRangeChanged(0, app.events.findAll().size)
+                binding.recyclerView.adapter?.notifyDataSetChanged()
             }
+        ///The solution to the delete button not working was given by chatgpt after troubleshooting /
+            ///Refreshs the recylerview as the the event list was not updated visibly,
+            /// notifyDataSetChanged() makes the adapter rebind all visible list items to fix it
         }
 }

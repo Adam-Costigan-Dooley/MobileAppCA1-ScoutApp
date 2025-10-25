@@ -27,7 +27,10 @@ class EventMemStore : EventStore {
             logAll()
         }
     }
-
+    override fun delete(event: EventModel) {
+        events.removeIf { it.id == event.id }
+        logAll()
+    }
     private fun logAll() {
         events.forEach { i("$it") }
     }

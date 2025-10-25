@@ -10,7 +10,7 @@ import ie.setu.scouting.databinding.ActivityEventBinding
 import ie.setu.scouting.models.EventModel
 import timber.log.Timber.i
 import ie.setu.scouting.main.MainApp
-
+import android.view.View
 class EventActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEventBinding
@@ -28,7 +28,7 @@ class EventActivity : AppCompatActivity() {
 
         app = application as MainApp
         i("Event Activity started...")
-
+        binding.btnDelete.visibility = View.GONE
         // Edit mode?
         if (intent.hasExtra("event_edit")) {
             editMode = true
@@ -38,6 +38,14 @@ class EventActivity : AppCompatActivity() {
             binding.leadersNeeded.setText(event.leadersNeeded.toString())
             binding.parentVolunteersAllowed.isChecked = event.parentVolunteersAllowed
             binding.btnAdd.text = getString(R.string.button_save_event)
+
+            binding.btnDelete.visibility = View.VISIBLE
+            binding.btnDelete.setOnClickListener {
+                app.events.delete(event)   // remove by id in the mem store
+                setResult(RESULT_OK)
+                finish()
+            }
+
         } else {
             binding.btnAdd.text = getString(R.string.button_add_event)
         }

@@ -10,4 +10,5 @@
     <string name="menu_cancelEvent">Cancel</string>
     <string name="snackbar_enter_title">Please enter a title</string>
     <string name="button_save_event">Save Event</string>
+    <string name="button_delete_event">Delete Event</string>
 </resources>
