@@ -7,6 +7,7 @@ import ie.setu.scouting.databinding.ActivityEventBinding
 import ie.setu.scouting.models.EventModel
 import timber.log.Timber.i
 import ie.setu.scouting.main.MainApp
+
 class EventActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEventBinding
@@ -22,17 +23,20 @@ class EventActivity : AppCompatActivity() {
         i("Event Activity started...")
 
         binding.btnAdd.setOnClickListener { view ->
-            event.title = binding.eventTitle.text.toString()
-            event.description = binding.description.text.toString()
+            val title = binding.eventTitle.text.toString()
+            val description = binding.description.text.toString()
+            val leadersNeededText = binding.leadersNeeded.text.toString().trim()
+            val leadersNeeded = leadersNeededText.toIntOrNull() ?: 0
+            val parentAllowed = binding.parentVolunteersAllowed.isChecked
 
-            if (event.title.isNotEmpty()) {
+            if (title.isNotEmpty()) {
+                event.title = title
+                event.description = description
+                event.leadersNeeded = leadersNeeded
+                event.parentVolunteersAllowed = parentAllowed
+
                 app.events.add(event.copy())
                 i("add Button Pressed: $event")
-
-                // (optional) log contents
-                for (idx in app.events.indices) {
-                    i("Event[$idx]: ${app.events[idx]}")
-                }
 
                 setResult(RESULT_OK)
                 finish()

@@ -3,6 +3,7 @@ package ie.setu.scouting.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ie.setu.scouting.R
 import ie.setu.scouting.databinding.CardEventBinding
 import ie.setu.scouting.models.EventModel
 
@@ -31,6 +32,13 @@ class EventAdapter(private var events: List<EventModel>) :
         fun bind(event: EventModel) {
             binding.eventTitle.text = event.title
             binding.description.text = event.description
-        }
+            binding.leadersNeeded.text = binding.root.context.getString(
+                R.string.label_leaders_needed, event.leadersNeeded
+            )
+            val parentRequested = if (event.parentVolunteersAllowed) "Yes" else "No"
+            binding.parentAllowed.text = binding.root.context.getString(
+                R.string.label_parent_volunteers, parentRequested
+            )
+        } /// The above binding was generated with ChatGPT to provide a number and yes/no feature to the app, as i ran into an unexpected issue with implementing it originally.
     }
 }

@@ -4,4 +4,7 @@
     <string name="hint_event_title">Event Title</string>
     <string name="hint_event_description">Description</string>
     <string name="menu_addEvent">Add Event</string>
+    <string name="label_leaders_needed">Required Leaders: %1$d</string>
+    <string name="label_parent_volunteers">Parent Volunteers requested: %1$s</string>
+    <string name="hint_event_leaders">Required Leaders:</string>
 </resources>
