@@ -9,6 +9,9 @@ appcompat = "1.7.1"
 material = "1.13.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+moshi = "1.15.1"
+moshiKotlin = "1.15.2"
+moshiKotlinVersion = "1.15.1"
 timber = "1.5.1"
 kotlinPlugin = "2.2.10"
 
@@ -21,6 +24,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshiKotlin" }
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }
+moshi-kotlin-v1151 = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlinVersion" }
+moshi-v1151 = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 timber = { module = "com.github.ajalt:timberkt", version.ref = "timber" }
 
 [plugins]
