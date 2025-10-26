@@ -2,16 +2,18 @@ package ie.setu.scouting.main
 
 import android.app.Application
 import ie.setu.scouting.models.EventMemStore
+import ie.setu.scouting.models.EventStore
 import timber.log.Timber
-import timber.log.Timber.i
 
 class MainApp : Application() {
 
-    val events = EventMemStore()
+    lateinit var events: EventStore
+
 
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         Timber.i("Scouting app started")
+        events = EventMemStore(this)
     }
 }
