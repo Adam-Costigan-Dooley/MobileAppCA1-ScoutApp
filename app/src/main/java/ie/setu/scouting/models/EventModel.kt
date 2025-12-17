@@ -1,5 +1,6 @@
 package ie.setu.scouting.models
 
+import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
@@ -10,5 +11,16 @@ data class EventModel(
     var description: String = "",
     var leadersNeeded: Int = 0,
     var parentVolunteersAllowed: Boolean = false,
-    var date: String = ""
+    var date: String = "",
+    var image: Uri = Uri.EMPTY,
+    var lat: Double = 0.0,
+    var lng: Double = 0.0,
+    var zoom: Float = 0f
+) : Parcelable
+
+@Parcelize
+data class Location(
+    var lat: Double = 0.0,
+    var lng: Double = 0.0,
+    var zoom: Float = 0f
 ) : Parcelable

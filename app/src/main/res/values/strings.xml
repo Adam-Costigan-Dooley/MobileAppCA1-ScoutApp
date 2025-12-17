@@ -14,4 +14,14 @@
     <string name="hint_event_date">Event Date</string>
     <string name="label_event_date">Event Date: %1$s</string>
     <string name="button_pick_date">Pick Date</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="button_add_image">Add Event Image</string>
+    <string name="change_event_image">Change Event Image</string>
+    <string name="button_set_location">Set Event Location</string>
+    <string name="title_activity_map">Event Location</string>
+    <string name="menu_deleteEvent">Delete</string>
+    <string name="button_save_location">Save Location</string>
+    <string name="button_change_location">Change Location</string>
+    <string name="description_event_image">Event Image</string>
+    <string name="MAPS_API_KEY">AIzaSyAdcedYsFKNzGSdSWtCEFa5chEXYglJYZU</string>
 </resources>

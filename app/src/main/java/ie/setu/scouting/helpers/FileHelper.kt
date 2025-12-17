@@ -19,7 +19,7 @@ object FileHelper {
         return try {
             context.openFileInput(fileName).bufferedReader().use { it.readText() }
         } catch (e: FileNotFoundException) {
-            null //
+            null
         } catch (e: Exception) {
             e.printStackTrace()
             null
