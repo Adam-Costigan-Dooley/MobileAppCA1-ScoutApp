@@ -70,7 +70,6 @@ class EventPresenter(private val view: EventView) {
     }
 
     fun doSetLocation() {
-        // Default location (Waterford, Ireland - adjust to your preference)
         val location = Location(52.2593, -7.1101, 15f)
         if (event.zoom != 0f) {
             location.lat = event.lat

@@ -26,6 +26,8 @@ class EventJSONStore(private val context: Context) : EventStore {
         deserialize()
         lastId = (events.maxOfOrNull { it.id } ?: -1L) + 1L
     }
+    // NOTE: Switched from Placemark's Moshi to Gson for simpler Uri serialization.
+    // AI assistance helped identify that Gson's adapter pattern is more straightforward
 
     override fun findAll(): List<EventModel> = events
 

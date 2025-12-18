@@ -149,7 +149,6 @@ class EventView : AppCompatActivity(), OnMapReadyCallback {
         googleMap.uiSettings.isRotateGesturesEnabled = false
         googleMap.uiSettings.setAllGesturesEnabled(false)
 
-        // Now that map is ready, update it with current location
         updateMapPreview()
     }
 
@@ -181,11 +180,13 @@ class EventView : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun updateMapPreview() {
-        // Check if presenter is initialized (avoid crash during initialization)
         if (!::presenter.isInitialized) {
             i("Map preview skipped: presenter not initialized yet")
             return
         }
+        // BUGFIX: AI assistance helped identify initialization order issue
+        // Presenter must be initialized before accessing its event property
+        // Using Kotlin's lateinit check prevents crash during onCreate sequence
 
         val event = presenter.event
 

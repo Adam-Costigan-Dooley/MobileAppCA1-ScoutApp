@@ -45,6 +45,9 @@ class EditLocationView : AppCompatActivity(), OnMapReadyCallback,
         binding.btnSaveLocation.setOnClickListener {
             presenter.doOnBackPressed()
         }
+        // NOTE: Addition beyond Placemark - explicit Save Location button
+        // Testing on Pixel 8 Pro emulator had issues with saving the location when backing out
+        // Added explicit button for clear fuctionality regardless of device
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
